@@ -1,0 +1,26 @@
+.main-nav {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+
+  a {
+    padding: 0.25rem 0.75rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    border: 1px solid var(--theme-color);
+    background-color: #ffffff;
+    color: var(--theme-color-dark);
+    text-decoration: none;
+    transition: 0.25s all ease-in;
+
+    &:hover {
+      background-color: #f6f6f6;
+    }
+
+    &.active {
+      border: 1px solid var(--theme-color-dark);
+      background-color: var(--theme-color-dark);
+      color: #ffffff;
+    }
+  }
+}

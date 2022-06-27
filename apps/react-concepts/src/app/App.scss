@@ -1,0 +1,19 @@
+.site-header {
+  background-color: var(--theme-color-light);
+  padding: 1rem;
+
+  h1 {
+    color: var(--theme-color-headings);
+    margin: 0 0 1rem;
+    text-shadow: 1px 0 7px #ffffff;
+  }
+}
+
+.site-content {
+  display: grid;
+  grid-template-columns: 1fr 900px 1fr;
+
+  .content {
+    grid-column-start: 2;
+  }
+}

@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  --theme-color: #61dbfb;
+  --theme-color-light: #{desaturate(lighten(#61dbfb, 25%), 40%)};
+  --theme-color-dark: #{darken(#61dbfb, 48%)};
+  --theme-color-headings: #{desaturate(darken(#61dbfb, 25%), 20%)};
+
+
+  margin: 0;
+  min-height: 100vh;
+  font-size: 1.6rem;
+  background: var(--bg-color-50);
+  color: #333333;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  font-size: 1.75em;
+}
