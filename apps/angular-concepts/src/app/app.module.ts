@@ -9,7 +9,19 @@ import { RouterModule } from '@angular/router';
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(
+      [
+        {
+          path: 'reactive-form',
+          loadChildren: () => import('./modules/reactive-form/reactive-form.module').then(m => m.ReactiveFormModule)
+        },
+        {
+          path: 'template-form',
+          loadChildren: () => import('./modules/template-form/template-form.module').then(m => m.TemplateFormModule)
+        }
+      ],
+      { initialNavigation: 'enabledBlocking' }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

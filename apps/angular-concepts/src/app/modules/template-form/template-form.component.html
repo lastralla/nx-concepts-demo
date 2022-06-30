@@ -1,0 +1,324 @@
+<h1>Template-Driven Form</h1>
+
+<div class="card">
+  <div class="card-body">
+    <form
+      #templateForm="ngForm"
+      (ngSubmit)="onSubmit(templateForm)"
+      [conceptsMustMatch]="['password', 'confirmPassword']"
+    >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          class="form-control"
+          type="text"
+          required
+          name="name"
+          required
+          [(ngModel)]="model.name"
+          #name="ngModel"
+          [ngClass]="{
+            'is-invalid': name.invalid && (name.touched || templateForm.submitted)
+          }"
+        />
+        <div
+          *ngIf="name.invalid && (name.touched || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="name.errors?.['required']">
+            Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="username">
+          Username
+        </label>
+        <input
+          id="username"
+          class="form-control"
+          type="text"
+          name="username"
+          required
+          conceptsValidateUsername
+          pattern="([A-Za-z0-9]){5,}"
+          [(ngModel)]="model.username"
+          #username="ngModel"
+          [ngClass]="{
+            'is-invalid': username.invalid && (username.touched || templateForm.submitted)
+          }"
+        />
+        <div
+          *ngIf="username.invalid && ((username.touched && username.value.length > 4) || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="username.errors?.['required']">
+            Username is required
+          </div>
+          <div *ngIf="username.errors?.['pattern']">
+            Invalid username
+          </div>
+          <div *ngIf="username.errors?.['validateUsername']">
+            Username is already taken
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+        <input
+          id="email"
+          class="form-control"
+          type="text"
+          name="email"
+          required
+          email
+          [(ngModel)]="model.email"
+          #email="ngModel"
+          [ngClass]="{
+            'is-invalid': email.invalid && (email.touched || templateForm.submitted)
+          }"
+        />
+        <div
+          *ngIf="email.invalid && (email.touched || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="email.errors?.['required']">
+            Email is required
+          </div>
+          <div *ngIf="email.errors?.['email']">
+            Must be a valid email
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age">
+          Age
+        </label>
+        <input
+          id="age"
+          class="form-control"
+          type="number"
+          name="age"
+          required
+          [(ngModel)]="model.age"
+          #age="ngModel"
+          [ngClass]="{
+            'is-invalid': age.invalid && (age.touched || templateForm.submitted)
+          }"
+        />
+        <div
+          *ngIf="age.invalid && (age.touched || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="age.errors?.['required']">
+            Age is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+        <input
+          id="password"
+          class="form-control"
+          type="password"
+          name="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+          [(ngModel)]="model.password"
+          #password="ngModel"
+          [ngClass]="{
+            'is-invalid': password.invalid && (password.touched || templateForm.submitted)
+          }"
+        />
+        <div
+          *ngIf="password.invalid && (password.touched || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="password.errors?.['required']">
+            Password is required
+          </div>
+          <div *ngIf="password.errors?.['pattern']">
+            Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-pass">
+          Confirm Password
+        </label>
+        <input
+          id="confirm-pass"
+          class="form-control"
+          type="password"
+          name="confirmPassword"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+          [(ngModel)]="model.confirmPassword"
+          #confirmPassword="ngModel"
+          [ngClass]="{
+            'is-invalid': confirmPassword.invalid && (confirmPassword.touched || templateForm.submitted)
+          }"
+        />
+        <div
+          *ngIf="confirmPassword.invalid && (confirmPassword.touched || templateForm.submitted)"
+          class="error invalid-feedback"
+        >
+          <div *ngIf="confirmPassword.errors?.['required']">
+            Password confirmation is required
+          </div>
+          <div *ngIf="confirmPassword.errors?.['pattern']">
+            Must be in correct format
+          </div>
+          <div *ngIf="confirmPassword.errors?.['mustMatch']">
+            Password must match
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">
+          Comment
+        </label>
+        <textarea
+          id="comment"
+          name="comment"
+          class="form-control"
+          [(ngModel)]="model.comment"
+          #comment="ngModel"
+          required
+          rows="3"
+          [ngClass]="{
+            'is-invalid': comment.invalid && (comment.touched || templateForm.submitted)
+          }"
+        ></textarea>
+        <div
+          *ngIf="comment.invalid && (comment.touched || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="comment.errors?.['required']">
+            Comment is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="selectOption">
+          Select Option
+        </label>
+        <select
+          id="selectOption"
+          name="selectOption"
+          class="form-control"
+          required
+          [(ngModel)]="model.selectOption"
+          #selectOption="ngModel"
+          [ngClass]="{
+            'is-invalid': selectOption.invalid && (selectOption.touched || templateForm.submitted)
+          }"
+        >
+          <option value="">
+            Choose an option
+          </option>
+          <option
+            *ngFor="let option of selectOptions"
+            [value]="option.id"
+          >
+            {{option.label}}
+          </option>
+        </select>
+        <div
+          *ngIf="selectOption.invalid && (selectOption.touched || templateForm.submitted)"
+          class="invalid-feedback"
+        >
+          <div *ngIf="selectOption.errors?.['required']">
+            Select an option
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <ng-container *ngFor="let genderOption of genderOptions; let isLast = last;">
+          <div class="form-check form-check">
+            <!--
+              Template variable is not accesible for validation when using `NgFor`
+              https://github.com/angular/angular/issues/13974
+            -->
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              required
+              [id]="genderOption.id"
+              [value]="genderOption.id"
+              [(ngModel)]="model.gender"
+              #gender="ngModel"
+              [ngClass]="{
+                'is-invalid': gender.invalid && (gender.touched || templateForm.submitted)
+              }"
+            />
+
+            <label
+              [for]="genderOption.id"
+              class="form-check-label"
+            >
+              {{genderOption.label}}
+            </label>
+            <!--
+              workaround, apply only to last
+              https://github.com/angular/angular/issues/13974#issuecomment-273401167
+            -->
+            <div
+              *ngIf="isLast && gender.invalid && (gender.touched || templateForm.submitted)"
+              class="invalid-feedback"
+            >
+              <div *ngIf="gender.errors">
+                Gender is required
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <ng-container *ngFor="let checkboxOption of checkboxOptions">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [name]="checkboxOption.id"
+              [id]="checkboxOption.id"
+              [(ngModel)]="model.name[checkboxOption.id]"
+            />
+            <label
+              [for]="checkboxOption.id"
+              class="form-check-label"
+            >
+              {{checkboxOption.label}}
+            </label>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

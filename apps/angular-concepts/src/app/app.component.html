@@ -1,1 +1,19 @@
-<concepts-nx-welcome></concepts-nx-welcome> <router-outlet></router-outlet>
+<div class="layout">
+  <header class="banner">
+    {{ title }}
+  </header>
+  <nav
+    class="main-nav"
+    role="navigation"
+    aria-label="Main"
+  >
+    <a [href]="['/template-form']">Template Form</a>
+    <a [href]="['reactive-form']">Reactive Form</a>
+  </nav>
+  <main
+    class="main-content"
+    role="main"
+  >
+    <router-outlet></router-outlet>
+  </main>
+</div>

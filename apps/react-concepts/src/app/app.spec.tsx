@@ -22,6 +22,8 @@ describe('App', () => {
       </BrowserRouter>
     );
 
-    expect(getByText(/Welcome react-concepts/gi)).toBeTruthy();
+    console.log(getByText(/React Concepts/g));
+
+    expect(getByText(/React Concepts/g)).toBeTruthy();
   });
 });
