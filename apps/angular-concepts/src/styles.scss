@@ -1,11 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 $font-multiplier: 1.6;
 
 // Overide Bootstrap variables
 // node_modules/bootstrap/scss/_variables.scss
 $font-size-base: 1rem * $font-multiplier;
 $form-check-input-gutter: 1.25rem * $font-multiplier;
-$form-check-input-margin-y: .3rem * $font-multiplier;
-$form-check-input-margin-x: .25rem * $font-multiplier;
+$form-check-input-margin-y: 0.3rem * $font-multiplier;
+$form-check-input-margin-x: 0.25rem * $font-multiplier;
 $h1-font-size: $font-size-base * 2.5 !default;
 $h2-font-size: $font-size-base * 2 !default;
 $h3-font-size: $font-size-base * 1.75 !default;
@@ -13,8 +17,12 @@ $h4-font-size: $font-size-base * 1.5 !default;
 $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
 
-@import "node_modules/bootstrap/scss/bootstrap";
+@import 'node_modules/bootstrap/scss/bootstrap';
 
+// TODO this conflicts with Boostrap, resolve problem
+// .use-material {
+//   @import './app/styles/material/theme';
+// }
 
 :host {
   --error-color: #cc0000;
@@ -33,11 +41,6 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   color: #333333;
 }
-
-// TODO this conflicts with Boostrap, resolve problem
-// .use-material {
-//   @import "./app/styles/material/theme";
-// }

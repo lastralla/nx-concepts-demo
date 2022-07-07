@@ -1,0 +1,59 @@
+label {
+  display: block;
+}
+
+input,
+textarea {
+  border: 1px solid black;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.todo {
+  width: 300px;
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #e7e7e7;
+
+  &:hover {
+    background: rgba(#e7e7e7, .5);
+    cursor: pointer;
+  }
+
+  &.done {
+    text-decoration: line-through;
+  }
+
+  &.urgent {
+    color: firebrick;
+  }
+
+  .delete {
+    float: right;
+  }
+
+  [type="checkbox"],
+  .title {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: inherit;
+  }
+
+  .description {
+    display: block;
+    font-size: 14px;
+    color: grey;
+    font-style: italic;
+    padding-left: 20px;
+  }
+  .urgent {
+    display: block;
+    color: lightslategray;
+    padding-left: 20px;
+  }
+}

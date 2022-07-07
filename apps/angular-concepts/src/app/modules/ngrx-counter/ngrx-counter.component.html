@@ -1,0 +1,50 @@
+<h1>NGRX Counter</h1>
+
+<div class="sec">
+  <h3>Current State</h3>
+
+  Current Count: <span *ngIf="{count: counter$ | async} as counter">{{counter.count}}</span>
+  <br>
+  Remaining TODOs: <span *ngIf="todosCount$ | async as todosCount">{{todosCount}}</span>
+</div>
+
+<div class="sec">
+  <button
+    class="btn btn-primary"
+    (click)="increment()"
+  >
+    Add 1
+  </button>
+  <button
+    class="btn btn-primary"
+    (click)="decrement()"
+  >
+    Remove 1
+  </button>
+  <hr>
+  <button
+    class="btn btn-primary"
+    (click)="addMultiple()"
+  >
+    Add Specific Number
+  </button>
+  <button
+    class="btn btn-primary"
+    (click)="removeMultiple()"
+  >
+    Remove Specific Number
+  </button>
+  <input
+    #incNum
+    type="number"
+    min="1"
+    value="2"
+  >
+  <hr>
+  <button
+    class="btn btn-primary"
+    (click)="reset()"
+  >
+    Reset
+  </button>
+</div>

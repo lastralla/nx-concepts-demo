@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './modules/home/home/home.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent, NxWelcomeComponent],
+      declarations: [AppComponent, HomeComponent],
     }).compileComponents();
   });
 
@@ -17,10 +17,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-concepts'`, () => {
+  it(`should have as title 'Angular Concepts'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-concepts');
+    expect(app.title).toEqual('Angular Concepts');
   });
 
   it('should render title', () => {
@@ -28,7 +28,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome angular-concepts'
+      'What is it?'
     );
   });
 });

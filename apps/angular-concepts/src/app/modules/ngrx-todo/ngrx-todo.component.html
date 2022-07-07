@@ -1,0 +1,92 @@
+<h1>NGRX Todo List</h1>
+
+<div class="sec">
+  <h4>Counter State</h4>
+  <span *ngIf="counter$ | async as counter">{{counter}}</span>
+
+  <h4>Todos</h4>
+  <ul *ngIf="todos$ | async as todos">
+    <li
+      *ngFor="let todo of todos; index as i; trackBy: trackByFn"
+      class="todo"
+      [class.done]="todo.isDone"
+      [class.urgent]="todo.isUrgent"
+      (click)="toggleDone(todo)"
+    >
+      <span
+        class="delete"
+        (click)="removeTodo($event, todo)"
+      >
+        X
+      </span>
+      <input
+        type="checkbox"
+        [checked]="todo.isDone"
+      >
+      <span class="title">
+        {{todo.title}}
+      </span>
+      <span
+        class="description"
+        *ngIf="todo.description"
+      >{{todo.description}}</span>
+      <div>
+        <span
+          class="urgent"
+          (click)="toggleTodoUrgent($event, todo); "
+        >
+          {{todo.isUrgent ? 'not urgent' : 'make urgent'}}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<hr>
+
+<h4>Add Items</h4>
+
+<div class="sec">
+  <form
+    #todoForm="ngForm"
+    (ngSubmit)="addTodo(todoForm)"
+  >
+    <div>
+      <label>Title</label>
+      <input
+        name="title"
+        #title="ngModel"
+        [(ngModel)]="model.title"
+        required
+        type="text"
+      >
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea
+        name="description"
+        #description="ngModel"
+        [(ngModel)]="model.description"
+        cols="30"
+        rows="3"
+      ></textarea>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        name="urgent"
+        #urgent="ngModel"
+        [(ngModel)]="model.urgent"
+      >
+      <label>Urgent</label>
+    </div>
+    <button
+      class="btn btn-primary btn-lg"
+      type="submit"
+      [disabled]="todoForm.invalid"
+    >
+      Add Todo
+    </button>
+  </form>
+
+</div>
