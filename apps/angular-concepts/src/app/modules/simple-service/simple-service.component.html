@@ -1,0 +1,11 @@
+<h1>Simple Service</h1>
+
+<h2>Via Observable Reference</h2>
+<ng-container *ngIf="autoData$ | async as autoData">
+  {{autoData | json}}
+</ng-container>
+
+<h2>Data Via Service Method Call</h2>
+<ng-container *ngIf="manualData$ | async as manualData">
+  {{manualData | json}}
+</ng-container>

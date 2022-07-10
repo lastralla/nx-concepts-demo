@@ -1,0 +1,15 @@
+<h1>API Requests</h1>
+
+<div>
+  <h2>Users (via promise)</h2>
+  <ul>
+    <li *ngFor="let user of usersPromise">{{user.name}}</li>
+  </ul>
+</div>
+
+<div>
+  <h2>Users (via Observable with async pipe)</h2>
+  <ul>
+    <li *ngFor="let user of users$ | async">{{user.name}}</li>
+  </ul>
+</div>

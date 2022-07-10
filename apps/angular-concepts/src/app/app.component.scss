@@ -20,7 +20,7 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 20rem min(1000px, calc(100% - 43rem)) 20rem 1fr;
+  grid-template-columns: 1fr 20rem min(800px, calc(100% - 43rem)) 20rem 1fr;
   gap: 1rem;
   margin: 0 auto;
   // padding-bottom: 10px;

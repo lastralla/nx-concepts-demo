@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/home/home.component';
 import { counterReducer, todoReducer } from './store/store.reducer';
+import { InMemoryDataService } from './services/in-memory-data.service';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,6 +18,7 @@ import { counterReducer, todoReducer } from './store/store.reducer';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot({
       count: counterReducer,
       todos: todoReducer,
@@ -27,6 +32,16 @@ import { counterReducer, todoReducer } from './store/store.reducer';
         {
           path: '',
           component: HomeComponent,
+        },
+        {
+          path: 'simple-service',
+          loadComponent: () => import('./modules/simple-service/simple-service.component').then(c => c.SimpleServiceComponent),
+          title: 'Simple Service Example',
+        },
+        {
+          path: 'api-requests',
+          loadComponent: () => import('./modules/api-requests/api-requests.component').then(c => c.ApiRequestsComponent),
+          title: 'Api Request Examples',
         },
         {
           path: 'reactive-form',
@@ -51,6 +66,7 @@ import { counterReducer, todoReducer } from './store/store.reducer';
       ],
       // { initialNavigation: 'enabledBlocking' }
     ),
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   providers: [],
   bootstrap: [AppComponent],

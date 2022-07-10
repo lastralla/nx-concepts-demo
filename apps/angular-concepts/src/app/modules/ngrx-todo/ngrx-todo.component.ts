@@ -44,7 +44,6 @@ export class NgrxTodoComponent {
 
   addTodo(form: NgForm) {
     if (form.valid) {
-      // console.log(form, form.value, form.controls);
       this.store.dispatch(actions.addItem({
         id: uuid(),
         title: form.value.title,
