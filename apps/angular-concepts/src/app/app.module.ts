@@ -62,6 +62,10 @@ import { HttpClientModule } from '@angular/common/http';
           path: 'ngrx-todo',
           loadChildren: () => import('./modules/ngrx-todo/ngrx-todo.module').then(m => m.NgrxTodoModule),
           title: 'NGRX Todo Example',
+        },
+        {
+          path: 'material-table',
+          loadChildren: () => import('./modules/material-table/material-table.module').then(m => m.MaterialTableModule),
         }
       ],
       // { initialNavigation: 'enabledBlocking' }
