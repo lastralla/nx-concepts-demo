@@ -41,7 +41,6 @@ export const initialTodoState: Todo[] = [
 export const counterReducer = createReducer(
   initialCouterState,
   on(increment, (state) => {
-    console.log(state, typeof state);
     return state + 1;
   }),
 

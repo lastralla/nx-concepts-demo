@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { UsersService } from '../../services/users.service';
 
 import { ApiRequestsComponent } from './api-requests.component';
 
@@ -8,7 +10,11 @@ describe('ApiRequestsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ApiRequestsComponent],
+      imports: [
+        ApiRequestsComponent,
+        HttpClientTestingModule,
+      ],
+      providers: [ UsersService ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ApiRequestsComponent);
